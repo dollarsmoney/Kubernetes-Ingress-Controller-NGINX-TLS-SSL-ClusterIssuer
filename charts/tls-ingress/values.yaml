@@ -1,0 +1,29 @@
+certIssuer:
+  create: true
+  email: you@example.com
+  environment: staging
+  ingressClassName: nginx
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+  hosts:
+    - host: app.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: ""
+          port: 80
+
+tls:
+  enabled: true
+  secretName: tls-ingress-cert
+
+demo:
+  enabled: true
+  image: nginxdemos/hello:plain-text
+  replicas: 1
+  port: 80

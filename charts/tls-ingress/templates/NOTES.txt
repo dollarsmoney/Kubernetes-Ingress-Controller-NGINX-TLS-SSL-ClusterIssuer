@@ -1,0 +1,15 @@
+Issuer: {{ include "tls-ingress.issuerName" . }}
+TLS secret: {{ .Values.tls.secretName }}
+
+Watch the certificate being issued:
+  kubectl get certificate,certificaterequest,order,challenge -n {{ .Release.Namespace }}
+  kubectl describe certificate {{ .Values.tls.secretName }} -n {{ .Release.Namespace }}
+
+Then test:
+{{- range .Values.ingress.hosts }}
+  curl -v https://{{ .host }}
+{{- end }}
+{{- if eq .Values.certIssuer.environment "staging" }}
+
+Staging certificates are not browser-trusted. Once READY=True, upgrade with -f values-production.yaml.
+{{- end }}

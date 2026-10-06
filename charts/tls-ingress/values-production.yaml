@@ -1,0 +1,16 @@
+certIssuer:
+  environment: production
+
+ingress:
+  hosts:
+    - host: hinty.com.ng
+      paths:
+        - path: /
+          pathType: Prefix
+    - host: www.hinty.com.ng
+      paths:
+        - path: /
+          pathType: Prefix
+
+tls:
+  secretName: hinty-production-tls

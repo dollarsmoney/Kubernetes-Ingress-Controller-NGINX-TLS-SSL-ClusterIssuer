@@ -1,0 +1,12 @@
+certIssuer:
+  environment: staging
+
+ingress:
+  hosts:
+    - host: staging.hinty.com.ng
+      paths:
+        - path: /
+          pathType: Prefix
+
+tls:
+  secretName: hinty-staging-tls

@@ -1,0 +1,11 @@
+apiVersion: v2
+name: tls-ingress
+description: NGINX Ingress with automatic TLS from Let's Encrypt via cert-manager ClusterIssuers
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - ingress-nginx
+  - cert-manager
+  - letsencrypt
+  - tls
